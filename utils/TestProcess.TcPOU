@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.2">
+  <POU Name="TestProcess" Id="{dc01b09e-1521-4822-8420-01f78ff42b6f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TestProcess IMPLEMENTS IProcess
+VAR
+	_running:BOOL := FALSE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="Running" Id="{1dbfa749-e7f6-4615-8f07-2406e736e946}">
+      <Declaration><![CDATA[PROPERTY Running : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{6cf8755d-22a1-4ed2-a3eb-cd4939af4599}">
+        <Declaration><![CDATA[]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Running := _running;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Start" Id="{8f82a9ab-c375-44ee-8d67-4910ab883cf1}">
+      <Declaration><![CDATA[METHOD Start
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_running := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{8c8da421-2574-457f-8ab1-66ec70f4c11c}">
+      <Declaration><![CDATA[METHOD Stop
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_running := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="TestProcess">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="TestProcess.Running.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="TestProcess.Start">
+      <LineId Id="4" Count="0" />
+    </LineIds>
+    <LineIds Name="TestProcess.Stop">
+      <LineId Id="4" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

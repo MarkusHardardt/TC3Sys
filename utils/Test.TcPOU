@@ -2,18 +2,31 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.2">
   <POU Name="Test" Id="{b3e6b4c9-6024-4350-9951-b167e5227189}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Test
-VAR_INPUT
-END_VAR
-VAR_OUTPUT
-END_VAR
 VAR
+	_process:TestProcess;
+	_start, _stop, _running:BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF _start THEN
+	_process.Start();
+	_start := FALSE;
+END_IF
+IF _stop THEN
+	_process.Stop();
+	_stop := FALSE;
+END_IF
+_process();
+_running := _process.Running;]]></ST>
     </Implementation>
     <LineIds Name="Test">
       <LineId Id="9" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="27" Count="2" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="26" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
